@@ -54,6 +54,7 @@ export default class Dropzone extends Emitter {
     super();
     let fallback, left;
     this.element = el;
+    console.log('constructor')
 
     this.clickableElements = [];
     this.listeners = [];
@@ -212,6 +213,7 @@ export default class Dropzone extends Emitter {
   // The function that gets called when Dropzone is initialized. You
   // can (and should) setup event listeners inside this function.
   init() {
+    console.log('init')
     // In case it isn't set already
     if (this.element.tagName === "form") {
       this.element.setAttribute("enctype", "multipart/form-data");
@@ -1141,6 +1143,7 @@ export default class Dropzone extends Emitter {
 
   // Loads the file, then calls finishedLoading()
   processFiles(files) {
+    console.log('processFiles')
     for (let file of files) {
       file.processing = true; // Backwards compatibility
       file.status = Dropzone.UPLOADING;
@@ -1210,6 +1213,7 @@ export default class Dropzone extends Emitter {
 
   uploadFiles(files) {
     this._transformFiles(files, (transformedFiles) => {
+      console.log('uploadFiles')
       if (this.options.chunking) {
         // Chunking is not allowed to be used with `uploadMultiple` so we know
         // that there is only __one__file.
